@@ -1,0 +1,16 @@
+node_modules/
+.DS_Store
+*.log
+
+# Capacitor regenerates the native project on the CI runner
+android/
+
+# NEVER commit signing material
+*.keystore
+*.jks
+*.p12
+*.pem
+*.der
+release-key*
+.env
+.env.local
