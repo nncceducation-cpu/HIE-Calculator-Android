@@ -42,8 +42,7 @@ jobs:
           npx cap sync android
 
       - name: Generate the Android icon set (if assets/ provided)
-        run: npx capacitor-assets generate --android || echo "icon generation skipped (using default Capacitor icon)"
-
+        run: npx capacitor-assets generate --android && test -f android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
       - name: Patch android/ for a signed Play release
         env:
           ANDROID_VERSION_CODE: ${{ github.event.inputs.version_code }}
