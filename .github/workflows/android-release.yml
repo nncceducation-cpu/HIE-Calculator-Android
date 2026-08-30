@@ -4,13 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       version_code:
-        description: "Version code (integer, must be higher than the last Play upload; last was 3)"
+        description: "Version code (integer, must be higher than the last Play upload; last Play upload was 4)"
         required: true
-        default: "4"
+        default: "5"
       version_name:
         description: "Version name shown to users"
         required: true
-        default: "2.1"
+        default: "2.2"
 
 jobs:
   build:
