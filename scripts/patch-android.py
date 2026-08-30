@@ -8,8 +8,7 @@ things are wrong with the stock Capacitor 6 output:
 
   1. It targets SDK 34. Google Play requires new bundles to target a recent API
      level; from 31 Aug 2026 an app whose target API is not within one year of
-     the latest release can no longer be updated. We go to 35 now; bump
-     TARGET_SDK to 36 before that date if needed.
+     the latest release can no longer be updated. The release build now targets API 36.
   2. compileSdk 35 needs Android Gradle Plugin >= 8.6. Capacitor 6 ships 8.2.1,
      so AGP and the Gradle wrapper both move up too.
   3. There is no signing config at all - the stock release buildType is unsigned.
