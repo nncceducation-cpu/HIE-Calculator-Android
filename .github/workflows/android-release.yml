@@ -1,6 +1,8 @@
 name: Android build (signed .aab + .apk)
 
 on:
+  push:
+    branches: [api36-release]
   workflow_dispatch:
     inputs:
       version_code:
@@ -45,8 +47,8 @@ jobs:
         run: npx capacitor-assets generate --android && test -f android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
       - name: Patch android/ for a signed Play release
         env:
-          ANDROID_VERSION_CODE: ${{ github.event.inputs.version_code }}
-          ANDROID_VERSION_NAME: ${{ github.event.inputs.version_name }}
+          ANDROID_VERSION_CODE: ${{ github.event.inputs.version_code || '5' }}
+          ANDROID_VERSION_NAME: ${{ github.event.inputs.version_name || '2.2' }}
         run: python3 scripts/patch-android.py
 
       - name: Restore the signing keystore
@@ -90,7 +92,7 @@ jobs:
       - name: Rename the artifacts
         run: |
           set -euo pipefail
-          V="${{ github.event.inputs.version_name }}-${{ github.event.inputs.version_code }}"
+          V="${{ github.event.inputs.version_name || '2.2' }}-${{ github.event.inputs.version_code || '5' }}"
           mkdir -p out
           cp android/app/build/outputs/bundle/release/app-release.aab "out/HIE-Calculator-${V}.aab"
           cp android/app/build/outputs/apk/release/app-release.apk    "out/HIE-Calculator-${V}.apk"
