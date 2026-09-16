@@ -17,11 +17,22 @@
     <p id="message">Connect to the internet and reopen the app to load the calculator.</p>
   </div>
   <script>
-    if ((navigator.language || '').toLowerCase().startsWith('es')) {
+    const language = (navigator.language || '').toLowerCase();
+    if (language.startsWith('es')) {
       document.documentElement.lang = 'es';
       document.title = 'Calculadora de EHI';
       document.getElementById('title').textContent = 'Calculadora de EHI';
       document.getElementById('message').textContent = 'Conéctese a internet y vuelva a abrir la aplicación para cargar la calculadora.';
+    } else if (language.startsWith('fr')) {
+      document.documentElement.lang = 'fr';
+      document.title = 'Calculateur d’EHI';
+      document.getElementById('title').textContent = 'Calculateur d’EHI';
+      document.getElementById('message').textContent = 'Connectez-vous à Internet et rouvrez l’application pour charger le calculateur.';
+    } else if (language.startsWith('pt')) {
+      document.documentElement.lang = 'pt';
+      document.title = 'Calculadora de EHI';
+      document.getElementById('title').textContent = 'Calculadora de EHI';
+      document.getElementById('message').textContent = 'Conecte-se à internet e reabra o aplicativo para carregar a calculadora.';
     }
   </script>
 </body>
