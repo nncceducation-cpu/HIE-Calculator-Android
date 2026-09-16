@@ -102,6 +102,21 @@ def app_gradle(t: str) -> str:
 
 edit(ANDROID / "app/build.gradle", app_gradle)
 
+# 4 -- localized launcher name. English remains the default; Android selects
+# the Spanish resource automatically for devices configured in Spanish.
+spanish_values = ANDROID / "app/src/main/res/values-es"
+spanish_values.mkdir(parents=True, exist_ok=True)
+(spanish_values / "strings.xml").write_text(
+    '<?xml version="1.0" encoding="utf-8"?>\n'
+    '<resources>\n'
+    '    <string name="app_name">Calculadora de EHI</string>\n'
+    '    <string name="title_activity_main">Calculadora de EHI</string>\n'
+    '    <string name="package_name">com.hiecalc</string>\n'
+    '    <string name="custom_url_scheme">com.hiecalc</string>\n'
+    '</resources>\n'
+)
+print("  added Spanish Android resources")
+
 # -- verify, loudly.
 checks = {
     ANDROID / "variables.gradle": [

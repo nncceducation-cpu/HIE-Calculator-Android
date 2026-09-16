@@ -7,7 +7,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 // signing key we control going forward.
 const config: CapacitorConfig = {
   appId: 'com.hiecalc',
-  appName: 'Calculadora de EHI',
+  appName: 'HIE Calculator',
   webDir: 'www',
   server: {
     // The published UI. Must stay in sync with the app's Play listing.
